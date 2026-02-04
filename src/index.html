@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="fireworks"></canvas>
+
+  <div class="floating">
+    Make <span id="goal"></span> groups of <span id="groupSize"></span>! (By combining two at a time.) &nbsp;
+    Score: <span id="score">0</span> &nbsp;
+    Mistakes: <span id="mistakes">0</span> &nbsp;
+    <button type="button" id="deselect" disabled onclick="Game.deselect()">Deselect</button>
+    <button type="button" id="newgame" onclick="Game.newGame()">New Game</button>
+    &nbsp;|&nbsp;
+    Size: <select id="gameSize" onchange="Game.changeSize(this.value)">
+      <option value="3">3x3</option>
+      <option value="5">5x5</option>
+      <option value="10">10x10</option>
+      <option value="15">15x15</option>
+      <option value="20">20x20</option>
+      <option value="45">45x45</option>
+    </select>
+  </div>
+
+  <div id="board"></div>
+
+  <!-- Load scripts in order -->
+  <script src="config.js"></script>
+  <script src="categories.js"></script>
+  <script src="effects.js"></script>
+  <script src="board.js"></script>
+  <script src="game.js"></script>
+  <script>
+    // Display config in header
+    document.getElementById('goal').textContent = CONFIG.numGroups;
+    document.getElementById('groupSize').textContent = CONFIG.itemsPerGroup;
+
+    // Set dropdown to current size
+    document.getElementById('gameSize').value = CONFIG.numGroups;
+
+    // Start the game
+    Game.init();
+  </script>
+</body>
+</html>
