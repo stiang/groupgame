@@ -243,12 +243,6 @@ const Game = {
 
   // Win condition
   win() {
-    // Use requestAnimationFrame to ensure DOM repaints before alert blocks
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        alert('You win!!');
-        Effects.startFireworks();
-      });
-    });
+    Effects.startFireworks();
   }
 };
